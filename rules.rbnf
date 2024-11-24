@@ -1,0 +1,13 @@
+E | vec3(C, C, C);
+
+A | random
+  | x
+  | y
+  | t
+  ;
+
+C ||  A
+  ||| add(C, C)
+  ||| mult(C, C)
+  | sqrt(abs(C))
+  ;
