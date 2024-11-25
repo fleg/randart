@@ -28,11 +28,16 @@
 
         out vec4 fragColor;
 
-        void main() {
-            float x = gl_FragCoord.x / screen.x;
-            float y = gl_FragCoord.y / screen.y;
+        vec4 map_color(vec3 rgb) {
+            return vec4((rgb + 1.0)/2.0, 1.0);
+        }
 
-            fragColor = vec4(y, x, y, 1.0);
+        void main() {
+            float x = 2.0*(gl_FragCoord.x / screen.x) - 1.0;
+            float y = 2.0*(gl_FragCoord.y / screen.y) - 1.0;
+            float t = sin(0.001*time);
+            vec3 rgb = ${window.getShaderColor(30)};
+            fragColor = map_color(rgb);
         }
     `;
     const fs = gl.createShader(gl.FRAGMENT_SHADER);
